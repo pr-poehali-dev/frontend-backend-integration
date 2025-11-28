@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансфер в Шерегеш - Комфортные поездки на горнолыжный курорт</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1a1f2c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://images.unsplash.com/photo-1551582045-6ec9c11d8697?q=80&w=2000') center/cover;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+        
+        .hero-text .highlight {
+            color: #60a5fa;
+        }
+        
+        .hero-text p {
+            font-size: 20px;
+            color: #bfdbfe;
+            margin-bottom: 32px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Form Card */
+        .form-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .form-card h3 {
+            font-size: 24px;
+            margin-bottom: 24px;
+            color: #1a1f2c;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #1a1f2c;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        
+        /* Routes Section */
+        .routes {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-header h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+        
+        .routes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        
+        .route-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .route-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .route-icon {
+            width: 56px;
+            height: 56px;
+            background: #dbeafe;
+            color: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 28px;
+            transition: all 0.3s;
+        }
+        
+        .route-card:hover .route-icon {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .route-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .route-to {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .route-duration {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .route-price {
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        
+        .route-price .price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: linear-gradient(to bottom right, #eff6ff, #dbeafe);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            background: #dbeafe;
+            color: #3b82f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 24px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        
+        .benefit-card p {
+            color: #64748b;
+        }
+        
+        /* How to Order Section */
+        .how-to-order {
+            padding: 80px 0;
+        }
+        
+        .how-to-order-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        
+        .step {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .step h3 {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        
+        .step p {
+            color: #64748b;
+        }
+        
+        .contact-card {
+            background: linear-gradient(to bottom right, #3b82f6, #2563eb);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+        }
+        
+        .contact-card h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+        
+        .contact-card p {
+            color: #bfdbfe;
+            margin-bottom: 24px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-btn {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1e293b;
+            color: white;
+            padding: 48px 0 24px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        
+        footer h3, footer h4 {
+            margin-bottom: 16px;
+        }
+        
+        footer ul {
+            list-style: none;
+        }
+        
+        footer ul li {
+            color: #94a3b8;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 24px;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .how-to-order-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 40px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 32px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Трансфер в <span class="highlight">Шерегеш</span></h1>
+                    <p>Комфортные поездки из аэропорта и вокзала на курорт. Встретим с табличкой, поможем с багажом и довезём безопасно.</p>
+                    <div class="hero-buttons">
+                        <a href="tel:+79235550000" class="btn btn-primary">
+                            📞 +7 (923) 555-00-00
+                        </a>
+                        <a href="https://wa.me/79235550000" class="btn btn-outline">
+                            💬 Написать в WhatsApp
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="form-card">
+                    <h3>📅 Забронировать трансфер</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" placeholder="Иван Петров" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7 (999) 123-45-67" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="route">Маршрут</label>
+                            <select id="route" required>
+                                <option value="">Выберите маршрут</option>
+                                <option value="novokuznetsk">Новокузнецк → Шерегеш</option>
+                                <option value="kemerovo">Кемерово → Шерегеш</option>
+                                <option value="novosibirsk">Новосибирск → Шерегеш</option>
+                                <option value="back">Шерегеш → Аэропорт/Вокзал</option>
+                            </select>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Дата</label>
+                                <input type="date" id="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="passengers">Пассажиров</label>
+                                <input type="number" id="passengers" min="1" max="18" value="1" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            Отправить заявку
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="routes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Популярные маршруты</h2>
+                <p>Фиксированные цены без скрытых платежей</p>
+            </div>
+            
+            <div class="routes-grid">
+                <div class="route-card">
+                    <div class="route-icon">✈️</div>
+                    <h3>Новокузнецк</h3>
+                    <div class="route-to">→ Шерегеш</div>
+                    <div class="route-duration">⏱️ 2.5 часа</div>
+                    <div class="route-price">
+                        <span style="color: #64748b; font-size: 14px;">от</span>
+                        <span class="price">2 500 ₽</span>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">🚂</div>
+                    <h3>Кемерово</h3>
+                    <div class="route-to">→ Шерегеш</div>
+                    <div class="route-duration">⏱️ 4 часа</div>
+                    <div class="route-price">
+                        <span style="color: #64748b; font-size: 14px;">от</span>
+                        <span class="price">4 500 ₽</span>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">🚗</div>
+                    <h3>Новосибирск</h3>
+                    <div class="route-to">→ Шерегеш</div>
+                    <div class="route-duration">⏱️ 7 часов</div>
+                    <div class="route-price">
+                        <span style="color: #64748b; font-size: 14px;">от</span>
+                        <span class="price">8 500 ₽</span>
+                    </div>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">📍</div>
+                    <h3>Горнолыжный курорт</h3>
+                    <div class="route-to">→ Аэропорт/Вокзал</div>
+                    <div class="route-duration">⏱️ По запросу</div>
+                    <div class="route-price">
+                        <span style="color: #64748b; font-size: 14px;">от</span>
+                        <span class="price">2 800 ₽</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 32px;">
+                <p style="color: #64748b; margin-bottom: 16px;">Цена зависит от количества пассажиров и времени суток</p>
+                <a href="#" class="btn btn-outline" style="color: #1a1f2c; border-color: #e2e8f0;">
+                    🧮 Рассчитать точную стоимость
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему выбирают нас</h2>
+                <p>Более 5000 довольных клиентов за последний сезон</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Безопасность</h3>
+                    <p>Опытные водители с большим стажем, исправные автомобили</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Пунктуальность</h3>
+                    <p>Встретим вовремя, доставим точно в срок</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">❤️</div>
+                    <h3>Комфорт</h3>
+                    <p>Современные автомобили, Wi-Fi, климат-контроль</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💵</div>
+                    <h3>Фиксированная цена</h3>
+                    <p>Без скрытых платежей и неожиданных доплат</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <h3>Группы до 18 человек</h3>
+                    <p>Организуем трансфер для любой компании</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">❄️</div>
+                    <h3>Зимняя резина</h3>
+                    <p>Все автомобили подготовлены к горным условиям</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-to-order">
+        <div class="container">
+            <div class="how-to-order-content">
+                <div>
+                    <h2 style="font-size: 40px; margin-bottom: 32px;">Как заказать трансфер?</h2>
+                    <div class="steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h3>Оставьте заявку</h3>
+                                <p>Заполните форму на сайте или позвоните нам</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h3>Получите подтверждение</h3>
+                                <p>Менеджер свяжется с вами в течение 15 минут</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h3>Встреча и поездка</h3>
+                                <p>Водитель встретит вас с табличкой в назначенное время</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>Остались вопросы?</h3>
+                    <p>Свяжитесь с нами любым удобным способом, и мы с радостью поможем организовать ваш трансфер</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">📞 +7 (923) 555-00-00</div>
+                        <div class="contact-item">📧 info@sheregesh-transfer.ru</div>
+                        <div class="contact-item">⏰ Работаем круглосуточно</div>
+                    </div>
+                    
+                    <p style="font-size: 14px; margin-bottom: 16px;">Мы в соцсетях:</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn">💬</a>
+                        <a href="#" class="social-btn">✈️</a>
+                        <a href="#" class="social-btn">📞</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 style="display: flex; align-items: center; gap: 8px;">
+                        ⛰️ Шерегеш Трансфер
+                    </h3>
+                    <p style="color: #94a3b8; font-size: 14px;">
+                        Надёжный трансфер на горнолыжный курорт Шерегеш из любой точки Кузбасса и Новосибирска
+                    </p>
+                </div>
+                
+                <div>
+                    <h4>Популярные маршруты</h4>
+                    <ul>
+                        <li>Новокузнецк — Шерегеш</li>
+                        <li>Кемерово — Шерегеш</li>
+                        <li>Новосибирск — Шерегеш</li>
+                        <li>Трансфер из аэропорта</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li>+7 (923) 555-00-00</li>
+                        <li>info@sheregesh-transfer.ru</li>
+                        <li>г. Новокузнецк</li>
+                        <li>Работаем 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                © 2025 Шерегеш Трансфер. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                route: document.getElementById('route').value,
+                date: document.getElementById('date').value,
+                passengers: document.getElementById('passengers').value
+            };
+            
+            alert('Заявка отправлена! Мы свяжемся с вами в течение 15 минут.');
+            
+            // Здесь можно добавить отправку данных на сервер
+            console.log('Form data:', formData);
+            
+            // Очистка формы
+            this.reset();
+        });
+    </script>
+</body>
+</html>
